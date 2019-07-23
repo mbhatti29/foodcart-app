@@ -1,16 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Arvo&display=swap');
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+  font-family: 'Arvo', serif;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #051129;
+  height: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,6 +20,47 @@
   color: #61dafb;
 }
 
+h1 {
+    margin: 0;
+    
+    
+}
+.firstSection {
+    height: 400px;
+    background-color: #FBF1A9;
+    position: relative;
+    
+}
+.secondSection {
+    height: 400px;
+    background-color: #CDECFF;
+    position: relative;
+    
+}
+.thirdSection {
+    height: 400px;
+    background-color: yellow;
+    position: relative;
+}
+
+#search {
+    /* position: absolute;
+    top: 50%;
+    left: 50%; */
+    transform: translate(0, -50%);
+    border-radius: 50em;
+    border: grey solid 3px;
+    outline: none;
+    height: 21px;
+    width: 31%;
+    padding: 12px;
+    font-size: 20px;
+    text-align: center;
+}
+/* 
+#search:active {
+    text-align: left;
+} */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
