@@ -72,7 +72,7 @@ class App extends Component {
         const recipeList = this.state.recipeList.map((recipe, i) => (
           <div key={i} className='recipe'>
             <img src={recipe.image_url} alt='thumbnail' />
-            <p>{recipe.title}</p>
+            <p className='title'>{recipe.title}</p>
           </div>
         ))
       
