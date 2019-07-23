@@ -1,12 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Arvo&display=swap');
+/* @import url('./arvo.woff'); */
 
+@font-face {
+    font-family: Arvo;
+    src: url('./arvo.woff')
+}
 .App {
   text-align: center;
-  font-family: 'Arvo', serif;
+  font-family: Arvo, serif;
 }
 
 .App-header {
-  background-color: #051129;
+  background-color: #13133a;
   height: 130px;
   display: flex;
   flex-direction: column;
@@ -22,24 +26,30 @@
 
 h1 {
     margin: 0;
-    
-    
 }
+
 .firstSection {
-    height: 400px;
-    background-color: #FBF1A9;
+    height: 27px;
+    background-color: white;
     position: relative;
     
 }
 .secondSection {
-    height: 400px;
-    background-color: #CDECFF;
+    min-height: 500px;
+    background-color: white;
     position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    padding-top: 20px;
+    /* align-items: flex-start; */
     
 }
 .thirdSection {
     height: 400px;
-    background-color: yellow;
+    background-color: rgba(189, 132, 57, 0.924);
     position: relative;
 }
 
@@ -54,9 +64,38 @@ h1 {
     height: 21px;
     width: 31%;
     padding: 12px;
-    font-size: 20px;
+    font-size: 22px;
     text-align: center;
+    animation: size;
+    animation-duration: 0.4s;
 }
+
+@keyframes size {
+    from {width: 5%;}
+    to {width: 31%;}
+}
+
+.recipe {
+    flex-basis: 20%;
+    color: black;
+    font-size: 18px;
+    animation: image;
+    animation-duration: 2s;
+    
+}
+
+.recipe img {
+    border-radius: 1%;
+    width: 250px;
+    height: 250px;
+}
+
+@keyframes image {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+
 /* 
 #search:active {
     text-align: left;

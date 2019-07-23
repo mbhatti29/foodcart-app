@@ -6,56 +6,77 @@ class App extends Component {
     super(props)
   
     this.state = {
-       recipeList: [],
+       recipeList: [
+          {
+           image_url: 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+           title: 'burrito'
+          },
+          {
+            image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+           title: 'burrito'
+          },
+          {
+            image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+           title: 'burrito'
+          },
+          {
+            image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+           title: 'burrito'
+          },
+          {
+            image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+           title: 'burrito'
+          },
+          {
+            image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+           title: 'burrito'
+          },
+          {
+            image_url: 'https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+           title: 'burrito'
+          }
+       ],
        search : ''
     }
   }
   
   componentDidMount() {
-    // const id = 'd9f523f8'
     
   }
+
   search = (event) => {
     this.setState({
       search : event.target.value
     })
   }
 
-
   searchFoods = (event) => {
     event.preventDefault()
-    // this.setState({
-    //   search: event.target.value
-    // })
-    const key = '115a287a7e2cfbd715b6be309c1c5075'
-    fetch(`https://www.food2fork.com/api/search?key=${key}&q=${this.state.search}`)
-      .then(response => response.json())
-      .then(res => {
-        console.log(res)
-        this.setState({
-          recipeList: res
-        })
-      })
-    // this.state.search &&
-    //   fetch("https://www.googleapis.com/books/v1/volumes?q=" + this.state.search)
-    //     .then(res => res.json())
-    //     .then(res => {
-    //       console.log(res)
-    //       this.setState({
-    //         books: res.items
-    //       })
-    //     })
-  }
 
-  render() {
-    // console.log(this.state.recipeList)
-    // const recipes = this.state.recipeList.map((recipe, i) => (
-    //   <div key={i} className='recipe'>
-    //     <img src={recipes.image_url} alt='thumbnail'/>
-    //     <p>{recipe.title}</p>
-    //   </div>
-    // ))
+    if (event.target.value) {
+      const key = '115a287a7e2cfbd715b6be309c1c5075'
+      fetch(`https://www.food2fork.com/api/search?key=${key}&q=${this.state.search}`)
+        .then(response => response.json())
+        .then(res => {
+          console.log(res.recipes)
+          this.setState({
+            recipeList: res.recipes
+          })
+        })
+      }
+    }
+
     
+    render() {
+ 
+        const recipeList = this.state.recipeList.map((recipe, i) => (
+          <div key={i} className='recipe'>
+            <img src={recipe.image_url} alt='thumbnail' />
+            <p>{recipe.title}</p>
+          </div>
+        ))
+      
+      
     return (
       <div>
         <div className="App">
@@ -70,9 +91,9 @@ class App extends Component {
           </div>
            
           <div className='secondSection'>
-            {/* {recipes} */}
+            {recipeList}
           </div>
-          <div className='thirdSection'><h1>Third Section</h1></div>
+          <div className='thirdSection'></div>
         </div>
       </div>
     )
