@@ -5,8 +5,9 @@
     src: url('./arvo.woff')
 }
 .App {
-  text-align: center;
+  /* text-align: center; */
   font-family: Arvo, serif;
+  background-color: #E8E6DA;
 }
 
 .App-header {
@@ -28,26 +29,31 @@ h1 {
     margin: 0;
 }
 
+form {
+    background-color: #E8E6DA;
+}
 .firstSection {
     height: 27px;
     background-color: white;
     position: relative;
+    text-align: center;
     
 }
+
 .secondSection {
     min-height: 500px;
     width: 80%;
     margin: 0 auto;
-    background-color: white;
-    position: relative;
+    background-color: #E8E6DA;
+    /* position: relative; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: flex-start;
+    /* align-content: center; */
     padding-top: 20px;
     /* align-items: flex-start; */
-    
+    animation: image 1.8s;
 }
 .thirdSection {
     height: 400px;
@@ -81,31 +87,37 @@ h1 {
     /* flex-basis: 20%; */
     color: black;
     font-size: 18px;
-    animation: image;
+    /* animation: image; */
     animation-duration: 2s;
-    
+    /* padding-top: 10px; */
+    padding: 10px;
+    text-align: center;
 }
 
+
 .recipe img {
-    border-radius: 1%;
+    border: 3px solid white;
+    border-radius: 50%;
     width: 250px;
     height: 250px;
+    animation: image;
 }
 
 p.title {
+    max-width: 250px;
     margin-top: 9px;
+    
 }
 
 @keyframes image {
     from {opacity: 0;}
     to {opacity: 1;}
 }
-
-
-/* 
-#search:active {
-    text-align: left;
+/* @keyframes fadein {
+    from {opacity: 0; }
+    to   {opacity: 1; }
 } */
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -113,4 +125,120 @@ p.title {
   to {
     transform: rotate(360deg);
   }
+}
+
+.modal {
+    /* display: none; */
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    display: none;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.avatar {
+    height: 96px;
+    width: 96px;
+    border-radius: 50%;
+    background-color: white;
+    margin-top: -40px;
+    left: 5%;
+    position: relative;
+    margin-bottom:30px;
+}
+
+.sidenav {
+    height: 42%;
+    position: fixed;
+    z-index: 2;
+    /* bottom: 90px; */
+    top: 50;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.4s;
+    padding-top: 60px;
+    width: 1px;
+    opacity: 0.95;
+    /* background-color: black; */
+}
+
+
+.sidenav a {
+    margin-left: -17px;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.2s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#name {
+    display: flex;
+    z-index: 4;
+    color: black;
+    font-size: 30px;
+    position: relative;
+    float: right;
+}
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
 }
