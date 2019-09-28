@@ -92,13 +92,13 @@ class App extends Component {
       document.getElementById("mySidenav").style.width = "0";
     }
 
-    displayModal = (e) => {
-      // let x  = document.getElementsByClassName('modal-content')[0]
-      // console.log(x)
-      // x.style.display = "none";
+  displayModal = (e) => {
       e.target.parentElement.children[1].style.display = "block"
+      // console.log(recipe)
     }
-
+    examplefunction = (recipe) => {
+      console.log(recipe)
+    }
     closeModal = (e) => {
       e.target.parentElement.style.display = "none";
     }
@@ -114,7 +114,7 @@ class App extends Component {
 
             {/* <!-- The Modal --> */}
           <div className="myModal">
-            <button className = "myBtn" onClick={this.displayModal}>Open Modal</button>
+            <button className = "myBtn" onClick={(event) => this.examplefunction(recipe.title)}>Open Modal</button>
             <div className="modal-content">
               <span className="close" onClick={this.closeModal}>&times;</span>
               <p>{recipe.title}</p>
@@ -144,10 +144,19 @@ class App extends Component {
                 <a href="#">Clients</a>
                 <a href="#">Contact</a>
             </div>
-            <span id="name">User</span>
+            <div id="name">
+              <li>User</li>
+              <li>Login</li>
+              <li>Register</li>
+            </div>
+       
             <span style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={this.openNav}>&#9776;</span>
           <div className='secondSection'>
               {recipeList}
+          </div>
+          <div className="modalEx">
+            <button class="modalBtn">Close</button>
+            <div id="modalContent"></div>
           </div>
           <div className='thirdSection'>
             {/* {filteredRecipes} */}
@@ -159,3 +168,6 @@ class App extends Component {
 }
 
 export default App;
+
+
+// - make a function that sends data from 

@@ -42,7 +42,7 @@ form {
 
 .secondSection {
     min-height: 500px;
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     background-color: #E8E6DA;
     /* position: relative; */
@@ -92,6 +92,7 @@ form {
     /* padding-top: 10px; */
     padding: 10px;
     text-align: center;
+    max-width: 300px;
 }
 
 
@@ -130,9 +131,9 @@ p.title {
 .modal {
     /* display: none; */
     /* Hidden by default */
-    position: fixed;
+    position: absolute;
     /* Stay in place */
-    z-index: 1;
+    z-index: 2;
     /* Sit on top */
     padding-top: 100px;
     /* Location of the box */
@@ -143,6 +144,7 @@ p.title {
     height: 100%;
     /* Full height */
     overflow: auto;
+    /* background-color: black; */
     /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
     /* Fallback color */
@@ -153,13 +155,33 @@ p.title {
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
+    position: absolute;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    max-width: 80%;
     display: none;
 }
 
+.modalBtn {
+    float: right;
+    margin: 20px;
+    font-size: 30px;
+    
+}
+.modalEx {
+    display: none;
+    overflow: auto;
+    background-color: white;
+    height: 500px;
+    max-height: 100%;
+    width:600px;
+    max-width:100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 /* The Close Button */
 .close {
     color: #aaaaaa;
@@ -226,10 +248,9 @@ p.title {
 }
 
 #name {
-    display: flex;
     z-index: 4;
     color: black;
-    font-size: 30px;
+    font-size: 15px;
     position: relative;
     float: right;
 }
