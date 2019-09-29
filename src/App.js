@@ -49,6 +49,7 @@ class App extends Component {
 
           }
        ],
+       ingrediants: [],
        search : ''
     }
   }
@@ -70,7 +71,6 @@ class App extends Component {
 
   searchFoods = (event) => {
     event.preventDefault()
-    // console.log(event)
     if (this.state.search) {
       const key = '115a287a7e2cfbd715b6be309c1c5075'
       fetch(`https://www.food2fork.com/api/search?key=${key}&q=${this.state.search}`)
@@ -85,7 +85,6 @@ class App extends Component {
     }
 
     openNav = () => {
-      console.log("button clicked")
       document.getElementById("mySidenav").style.width = "160px";
     }
     closeNav = () => {
@@ -94,12 +93,26 @@ class App extends Component {
 
     displayModal = (e) => {
       e.target.parentElement.children[1].style.display = "block"
-      // console.log(recipe)
     }
     examplefunction = (recipe) => {
-      document.getElementById("img").src = recipe;
-  
+      this.setState({
+        ingrediants: []
+      })
+      document.getElementById("img").src = recipe.image_url;
+      if (recipe.ingredients) {
+        const listItems = recipe.ingredients.map((item, i) => {
+          console.log(item)
+          return (
+            item 
+          )
+        })
+        console.log(listItems)
+        this.setState({
+          ingrediants: listItems
+        })
+      }
     }
+
     closeModal = (e) => {
       e.target.parentElement.style.display = "none";
     }
@@ -112,7 +125,7 @@ class App extends Component {
     const recipeList = this.state.recipeList.map((recipe, i) => (
         <div key={i} className='recipe'><img src={recipe.image_url} alt='thumbnail' />
           <p className='title'>{recipe.title}</p>
-            <button className = "myBtn" onClick={() => this.examplefunction(recipe.image_url)}>Open Modal</button>
+            <button className = "myBtn" onClick={() => this.examplefunction(recipe)}>Open Modal</button>
 
             {/* <!-- The Modal --> */}
           <div className="myModal">
@@ -125,6 +138,11 @@ class App extends Component {
         </div>
       ))
 
+      const newIngrediants = this.state.ingrediants.map((item, i) => {
+      return (
+        <li key={i}>{item}</li>
+      )
+    })
     return (
       <div>
         <div className="App">
@@ -153,7 +171,7 @@ class App extends Component {
               <li>Register</li>
             </span>
           <div className='secondSection'>
-              {recipeList.slice(0,12)}
+              {recipeList.slice(0,8)}
           </div>
           <div className="modalEx">
             <button class="modalBtn">Close</button>
@@ -167,11 +185,7 @@ class App extends Component {
             <div id="ingrediants">
               <div id="list">
                   <h1>Ingrediants</h1>
-                  <p>List Items</p>
-                  <p>List Items</p>
-                  <p>List Items</p>
-                  <p>List Items</p>
-                  <p>List Items</p>
+                  {newIngrediants}
               </div>
             </div>
           </div>

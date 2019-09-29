@@ -42,10 +42,11 @@ form {
 }
 
 .secondSection {
-    min-height: 500px;
+    /* min-height: 500px; */
+    min-height: 80vh;
     width: 70%;
     margin: 0 auto;
-    padding-bottom: 25px;
+    /* padding-bottom: 25px; */
     background-color: #E8E6DA;
     /* position: relative; */
     display: flex;
@@ -53,12 +54,12 @@ form {
     flex-wrap: wrap;
     
     justify-content: center;
-    /* align-content: center; */
-    padding-top: 20px;
+    align-content: flex-start;
+    /* padding-top: 15px; */
     /* position: relative; */
     /* align-items: flex-start; */
     animation: image 1.8s;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid lightgrey;
 }
 /* .thirdSection {
     height: 400px;
@@ -269,7 +270,7 @@ p.title {
     width: 75%;
     height: 400px;
     position: relative;
-    margin-top: 10px;
+    margin-top: 20px;
     padding-bottom: 50px;
 }
 #main-image {
@@ -279,13 +280,14 @@ p.title {
     align-content: center;
     align-items: center;
     justify-content: center;
-    width: 65%;
+    width: 60%;
     height: 400px;
     background-color: white;
 }
 #ingrediants {
+    text-decoration: underline;
     color: white;
-    width: 35%;
+    width: 40%;
     /* height: 380px;
     background-color: grey; */
     display: flex;
@@ -298,7 +300,10 @@ p.title {
     /* width: 30px; */
     /* background-color: red; */
 }
-
+li {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
 #img {
     height: 100%;
     width: 100%;
@@ -312,16 +317,14 @@ p.title {
     .sidenav a {
         font-size: 18px;
     } */
-
     .thirdSection {
         display: flex;
         flex-direction: column;
         height: 600px;
+        width: 450px;
         /* background-color: red; */
         /* width: 30%; */
-
     }
-
     #main-image {
         width: 100%;
         height: 800px;
@@ -330,10 +333,10 @@ p.title {
         width: 100%;
         height: 900px;
     }
+
     h1 {
         color: red;
     }
-   
 }
 
 @media screen and (min-width: 800px) {
