@@ -86,18 +86,19 @@ class App extends Component {
 
     openNav = () => {
       console.log("button clicked")
-      document.getElementById("mySidenav").style.width = "210px";
+      document.getElementById("mySidenav").style.width = "160px";
     }
     closeNav = () => {
       document.getElementById("mySidenav").style.width = "0";
     }
 
-  displayModal = (e) => {
+    displayModal = (e) => {
       e.target.parentElement.children[1].style.display = "block"
       // console.log(recipe)
     }
     examplefunction = (recipe) => {
-      console.log(recipe)
+      document.getElementById("img").src = recipe;
+  
     }
     closeModal = (e) => {
       e.target.parentElement.style.display = "none";
@@ -111,10 +112,10 @@ class App extends Component {
     const recipeList = this.state.recipeList.map((recipe, i) => (
         <div key={i} className='recipe'><img src={recipe.image_url} alt='thumbnail' />
           <p className='title'>{recipe.title}</p>
+            <button className = "myBtn" onClick={() => this.examplefunction(recipe.image_url)}>Open Modal</button>
 
             {/* <!-- The Modal --> */}
           <div className="myModal">
-            <button className = "myBtn" onClick={(event) => this.examplefunction(recipe.title)}>Open Modal</button>
             <div className="modal-content">
               <span className="close" onClick={this.closeModal}>&times;</span>
               <p>{recipe.title}</p>
@@ -144,15 +145,15 @@ class App extends Component {
                 <a href="#">Clients</a>
                 <a href="#">Contact</a>
             </div>
-            <div id="name">
+       
+            <span style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={this.openNav}>&#9776;</span>
+            <span id="name">
               <li>User</li>
               <li>Login</li>
               <li>Register</li>
-            </div>
-       
-            <span style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={this.openNav}>&#9776;</span>
+            </span>
           <div className='secondSection'>
-              {recipeList}
+              {recipeList.slice(0,12)}
           </div>
           <div className="modalEx">
             <button class="modalBtn">Close</button>
@@ -160,6 +161,19 @@ class App extends Component {
           </div>
           <div className='thirdSection'>
             {/* {filteredRecipes} */}
+            <div id="main-image">
+              <img id="img" src='' alt=''/>
+            </div>
+            <div id="ingrediants">
+              <div id="list">
+                  <h1>Ingrediants</h1>
+                  <p>List Items</p>
+                  <p>List Items</p>
+                  <p>List Items</p>
+                  <p>List Items</p>
+                  <p>List Items</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

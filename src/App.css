@@ -11,7 +11,7 @@
 }
 
 .App-header {
-  background-color: #13133a;
+  background-color: black;
   height: 130px;
   display: flex;
   flex-direction: column;
@@ -31,6 +31,7 @@ h1 {
 
 form {
     background-color: #E8E6DA;
+    position:relative;
 }
 .firstSection {
     height: 27px;
@@ -44,22 +45,26 @@ form {
     min-height: 500px;
     width: 70%;
     margin: 0 auto;
+    padding-bottom: 25px;
     background-color: #E8E6DA;
     /* position: relative; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    
     justify-content: center;
     /* align-content: center; */
     padding-top: 20px;
+    /* position: relative; */
     /* align-items: flex-start; */
     animation: image 1.8s;
+    border-bottom: 1px solid black;
 }
-.thirdSection {
+/* .thirdSection {
     height: 400px;
     background-color: rgba(189, 132, 57, 0.924);
     position: relative;
-}
+} */
 
 #search {
     /* position: absolute;
@@ -99,8 +104,8 @@ form {
 .recipe img {
     border: 3px solid white;
     border-radius: 50%;
-    width: 250px;
-    height: 250px;
+    width: 180px;
+    height: 180px;
     animation: image;
 }
 
@@ -202,14 +207,14 @@ p.title {
     width: 96px;
     border-radius: 50%;
     background-color: white;
-    margin-top: -40px;
+    margin-top: -30px;
     left: 5%;
     position: relative;
     margin-bottom:30px;
 }
 
 .sidenav {
-    height: 42%;
+    height: 35%;
     position: fixed;
     z-index: 2;
     /* bottom: 90px; */
@@ -219,31 +224,29 @@ p.title {
     overflow-x: hidden;
     transition: 0.4s;
     padding-top: 60px;
-    width: 1px;
+    width: 0px;
     opacity: 0.95;
     /* background-color: black; */
 }
 
 
 .sidenav a {
+    font-size: 120%;
     margin-left: -17px;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    /* font-size: 25px; */
     color: white;
     display: block;
     transition: 0.2s;
 }
 
-.sidenav a:hover {
-    color: #f1f1f1;
-}
 
 .sidenav .closebtn {
     position: absolute;
     top: 0;
-    right: 25px;
-    font-size: 36px;
+    right: 8px;
+    font-size: 35px;
     margin-left: 50px;
 }
 
@@ -251,15 +254,94 @@ p.title {
     z-index: 4;
     color: black;
     font-size: 15px;
-    position: relative;
+    position: absolute;
+    margin-top: -5px;
+    top:30;
+    right: 0;
     float: right;
 }
-@media screen and (max-height: 450px) {
-    .sidenav {
+
+.thirdSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 75%;
+    height: 400px;
+    position: relative;
+    margin-top: 10px;
+    padding-bottom: 50px;
+}
+#main-image {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 65%;
+    height: 400px;
+    background-color: white;
+}
+#ingrediants {
+    color: white;
+    width: 35%;
+    /* height: 380px;
+    background-color: grey; */
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    background-color: black;
+}
+#list {
+    margin-top: 30px;
+    /* width: 30px; */
+    /* background-color: red; */
+}
+
+#img {
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    /* .sidenav {
         padding-top: 15px;
     }
 
     .sidenav a {
         font-size: 18px;
+    } */
+
+    .thirdSection {
+        display: flex;
+        flex-direction: column;
+        height: 600px;
+        /* background-color: red; */
+        /* width: 30%; */
+
     }
+
+    #main-image {
+        width: 100%;
+        height: 800px;
+    }
+    #ingrediants {
+        width: 100%;
+        height: 900px;
+    }
+    h1 {
+        color: red;
+    }
+   
+}
+
+@media screen and (min-width: 800px) {
+        .thirdSection {
+            width: 800px;
+        }
+
+        .secondSection {
+            width: 1000px;
+        }
 }
