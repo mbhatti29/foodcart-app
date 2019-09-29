@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import Header from './components/Header';
+import MainSection from './components/MainSection';
+import Ingrediants from './components/Ingrediants'
+import Footer from './components/Footer';
+
 import './App.css';
 
 class App extends Component {
@@ -94,6 +99,7 @@ class App extends Component {
     displayModal = (e) => {
       e.target.parentElement.children[1].style.display = "block"
     }
+
     examplefunction = (recipe) => {
       this.setState({
         ingrediants: []
@@ -106,7 +112,6 @@ class App extends Component {
             item 
           )
         })
-        console.log(listItems)
         this.setState({
           ingrediants: listItems
         })
@@ -117,7 +122,8 @@ class App extends Component {
       e.target.parentElement.style.display = "none";
     }
     
-    render() {
+  render() {
+
       // const filteredRecipes = this.state.recipeList.filter(recipe => {
       //   return recipe.title.toLowerCase().includes(this.state.search.toLowerCase())
       // })
@@ -138,59 +144,22 @@ class App extends Component {
         </div>
       ))
 
-      const newIngrediants = this.state.ingrediants.map((item, i) => {
+    const newIngrediants = this.state.ingrediants.map((item, i) => {
       return (
         <li key={i}>{item}</li>
       )
     })
+
+    const {search} = this.state;
+
     return (
-      <div>
-        <div className="App">
-          <header className="App-header">
-            <h1 className='b--hot-pink'>Food Cart</h1>
-          </header>
-          <div className='firstSection'>
-    
-            <form onSubmit={this.searchFoods}>
-              <input id='search' onChange={this.search} value={this.state.search} type='text' placeholder='Search Recipe'/>
-            </form>
-          </div>
-            <div id="mySidenav" className="sidenav">
-              <div class="avatar"></div>
-                <a href="#" className="closebtn" onClick={this.closeNav}>&times;</a>
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Clients</a>
-                <a href="#">Contact</a>
-            </div>
-       
-            <span style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={this.openNav}>&#9776;</span>
-            <span id="name">
-              <li>User</li>
-              <li>Login</li>
-              <li>Register</li>
-            </span>
-          <div className='secondSection'>
-              {recipeList.slice(0,8)}
-          </div>
-          <div className="modalEx">
-            <button class="modalBtn">Close</button>
-            <div id="modalContent"></div>
-          </div>
-          <div className='thirdSection'>
-            {/* {filteredRecipes} */}
-            <div id="main-image">
-              <img id="img" src='' alt=''/>
-            </div>
-            <div id="ingrediants">
-              <div id="list">
-                  <h1>Ingrediants</h1>
-                  {newIngrediants}
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="App">
+        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={search} closeNav= {this.closeNav} openNav={this.openNav} />
+        <MainSection recipeList={recipeList}/>
+        <Ingrediants ingrediants={newIngrediants}/>
+        {/* <Footer /> */}
       </div>
+    
     )
   }
 }
