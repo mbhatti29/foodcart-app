@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import MainSection from './components/MainSection';
 import Ingrediants from './components/Ingrediants'
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 
 import './App.css';
 
@@ -130,8 +130,8 @@ class App extends Component {
       
     const recipeList = this.state.recipeList.map((recipe, i) => (
         <div key={i} className='recipe'><img src={recipe.image_url} alt='thumbnail' />
-          <p className='title'>{recipe.title}</p>
-            <button className = "myBtn" onClick={() => this.examplefunction(recipe)}>Open Modal</button>
+          <p className='title' onClick={() => this.examplefunction(recipe)}>{recipe.title}</p>
+            {/* <button className = "myBtn" onClick={() => this.examplefunction(recipe)}>Open Modal</button> */}
 
             {/* <!-- The Modal --> */}
           <div className="myModal">
@@ -159,12 +159,8 @@ class App extends Component {
         <Ingrediants ingrediants={newIngrediants}/>
         {/* <Footer /> */}
       </div>
-    
     )
   }
 }
 
-export default App;
-
-
-// - make a function that sends data from 
+export default App; 
