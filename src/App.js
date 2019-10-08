@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import MainSection from './components/MainSection';
 import Ingrediants from './components/Ingrediants'
-import yaml from 'yaml-js';
 // import Footer from './components/Footer';
 
 import './App.css';
@@ -101,23 +100,35 @@ class App extends Component {
       e.target.parentElement.children[1].style.display = "block"
     }
 
-    examplefunction = (recipe) => {
-
+    showRecipe = (recipe) => {
+      console.log(recipe)
+      let { recipeId } = recipe.recipe_id;
       this.setState({
         ingrediants: []
       })
-      document.getElementById("img").src = recipe.image_url;
-      if (recipe.ingredients) {
-        const listItems = recipe.ingredients.map((item, i) => {
-          console.log(item)
-          return (
-            item 
-          )
-        })
-        this.setState({
-          ingrediants: listItems
-        })
-      }
+      fetch(`https://www.food2fork.com/api/get?key=115a287a7e2cfbd715b6be309c1c5075&rId=${recipeId}`)
+        .then(response => response.json())
+        .then(res => {
+          console.log(res.recipes)
+          this.setState({
+            ingrediants: res.ingrediants,
+            image: recipe.image_url
+          })
+      })
+        
+        // document.getElementById("img").src = recipe.image_url;
+        // if (recipe.ingredients) {
+        //   const listItems = recipe.ingredients.map((item, i) => {
+        //     console.log(item)
+        //     return (
+        //       item 
+        //       )
+        //     })
+        //     this.setState({
+        //     }
+        //   ingrediants: listItems
+        // })
+      // }
     }
 
     closeModal = (e) => {
@@ -132,7 +143,7 @@ class App extends Component {
       
     const recipeList = this.state.recipeList.map((recipe, i) => (
         <div key={i} className='recipe'><img src={recipe.image_url} alt='thumbnail' />
-          <p className='title' onClick={() => this.examplefunction(recipe)}>{recipe.title}</p>
+          <p className='title' onClick={() => this.showRecipe(recipe)}>{recipe.title}</p>
             {/* <button className = "myBtn" onClick={() => this.examplefunction(recipe)}>Open Modal</button> */}
 
             {/* <!-- The Modal --> */}
@@ -158,7 +169,7 @@ class App extends Component {
       <div className="App">
         <Header searchRecipes={this.searchFoods} search={this.search} searchValue={search} closeNav= {this.closeNav} openNav={this.openNav} />
         <MainSection recipeList={recipeList}/>
-        <Ingrediants ingrediants={newIngrediants}/>
+        <Ingrediants ingrediants={newIngrediants} image={this.state.image}  />
         {/* <Footer /> */}
       </div>
     )
