@@ -4,6 +4,10 @@
     font-family: Arvo;
     src: url('./arvo.woff')
 }
+
+html {
+     scroll-behavior: smooth;
+}
 .App {
   /* text-align: center; */
   font-family: Arvo, serif;
@@ -25,9 +29,6 @@
   color: #61dafb;
 }
 
-h1 {
-    margin: 0;
-}
 
 form {
     background-color: #E8E6DA;
@@ -94,7 +95,7 @@ form {
     color: black;
     font-size: 18px;
     /* animation: image; */
-    animation-duration: 2s;
+    /* animation-duration: 2s; */
     /* padding-top: 10px; */
     padding: 10px;
     text-align: center;
@@ -103,25 +104,33 @@ form {
 
 
 .recipe img {
-    border: 3px solid white;
+    border: 5px solid white;
     border-radius: 50%;
     width: 180px;
     height: 180px;
-    animation: image;
+    /* animation: image; */
+}
+.recipe img:hover {
+    border: 5px solid grey;
+    color: white;
+    opacity: 0.3;
+    /* animation-name: image; */
+    transition: 0.5s;
 }
 
-p.title {
+a {
+     margin-top: 9px;
     max-width: 250px;
-    margin-top: 9px;
+    display: block;
+    text-decoration: none;
+    font-weight: 800;
     cursor: pointer;
     color: black;
-    font-weight: 800;
-    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px white; */
 }
-
 p.title:hover {
     text-decoration: underline;
     color: grey;
+    
     
 }
 
@@ -282,47 +291,18 @@ p.title:hover {
     margin-top: 20px;
     padding-bottom: 50px;
 }
-#main-image {
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    width: 60%;
-    height: 400px;
-    background-color: white;
-}
-#ingrediants {
-    text-decoration: underline;
-    color: white;
-    width: 40%;
-    /* height: 380px;
-    background-color: grey; */
-    display: flex;
-    /* align-items: center; */
-    justify-content: center;
-    background-color: black;
-}
-.recipe img:hover {
-    opacity: 0.2;
-    animation-name: image;
-}
 
 
-#list {
-    margin-top: 30px;
-    /* width: 30px; */
-    /* background-color: red; */
-}
-li {
-    margin-top: 25px;
-    margin-bottom: 20px;
-}
+
+
+
 #img {
     height: 100%;
     width: 100%;
 }
+/* h1 {
+    margin-top: 15px;
+} */
 
 @media screen and (max-width: 800px) {
     /* .sidenav {
@@ -344,14 +324,11 @@ li {
         width: 100%;
         height: 800px;
     }
-    #ingrediants {
+    #ingredients {
         width: 100%;
         height: 900px;
     }
 
-    h1 {
-        color: red;
-    }
 }
 
 @media screen and (min-width: 800px) {

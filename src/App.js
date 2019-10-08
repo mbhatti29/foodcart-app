@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import MainSection from './components/MainSection';
-import Ingrediants from './components/Ingrediants'
+import Ingredients from './components/Ingredients'
 // import Footer from './components/Footer';
 
 import './App.css';
@@ -54,7 +54,7 @@ class App extends Component {
 
           }
        ],
-       ingrediants: [],
+       ingredients: ['1/2 cup of soup', '2 spoons of broocli'],
        search : ''
     }
   }
@@ -81,95 +81,88 @@ class App extends Component {
       fetch(`https://www.food2fork.com/api/search?key=${key}&q=${this.state.search}`)
         .then(response => response.json())
         .then(res => {
-          console.log(res.recipes)
-          this.setState({
-            recipeList: res.recipes
-          })
+          if (!res.error) {
+            this.setState({
+              recipeList: res.recipes
+            })
+          }
+        })
+        .catch(err => {
+          console.log("Recieved an error")
         })
       }
-    }
+  }
 
-    openNav = () => {
-      document.getElementById("mySidenav").style.width = "160px";
-    }
-    closeNav = () => {
-      document.getElementById("mySidenav").style.width = "0";
-    }
+  openNav = () => {
+    document.getElementById("mySidenav").style.width = "160px";
+  }
+  closeNav = () => {
+    document.getElementById("mySidenav").style.width = "0";
+  }
 
-    displayModal = (e) => {
-      e.target.parentElement.children[1].style.display = "block"
-    }
+  displayModal = (e) => {
+    e.target.parentElement.children[1].style.display = "block"
+  }
 
-    showRecipe = (recipe) => {
-      console.log(recipe)
-      let { recipeId } = recipe.recipe_id;
-      this.setState({
-        ingrediants: []
-      })
+  showRecipe = (recipe) => {
+    this.setState({
+      ingredients: [],
+      image: recipe.image_url
+    })
+    
+    if (recipe.recipe_id) {
+      const recipeId = recipe.recipe_id
       fetch(`https://www.food2fork.com/api/get?key=115a287a7e2cfbd715b6be309c1c5075&rId=${recipeId}`)
         .then(response => response.json())
         .then(res => {
-          console.log(res.recipes)
+          // console.log(res.recipe.ingredients)
           this.setState({
-            ingrediants: res.ingrediants,
+            ingredients: res.recipe.ingredients,
             image: recipe.image_url
           })
+          console.log(this.state.ingredients)
       })
-        
-        // document.getElementById("img").src = recipe.image_url;
-        // if (recipe.ingredients) {
-        //   const listItems = recipe.ingredients.map((item, i) => {
-        //     console.log(item)
-        //     return (
-        //       item 
-        //       )
-        //     })
-        //     this.setState({
-        //     }
-        //   ingrediants: listItems
-        // })
-      // }
+    } else {
+      this.setState({
+        ingredients:['Sorry no ingrediants yet!']
+      })
     }
+  }
 
     closeModal = (e) => {
       e.target.parentElement.style.display = "none";
     }
     
-  render() {
-    
-      // const filteredRecipes = this.state.recipeList.filter(recipe => {
-      //   return recipe.title.toLowerCase().includes(this.state.search.toLowerCase())
-      // })
+    filterRecipes = () => {
+      const filteredRecipes = this.state.recipeList.filter(recipe => {
+        return recipe.title.toLowerCase().includes(this.state.search.toLowerCase())
+      })
+    }
+
+    render() {
       
-    const recipeList = this.state.recipeList.map((recipe, i) => (
-        <div key={i} className='recipe'><img src={recipe.image_url} alt='thumbnail' />
-          <p className='title' onClick={() => this.showRecipe(recipe)}>{recipe.title}</p>
-            {/* <button className = "myBtn" onClick={() => this.examplefunction(recipe)}>Open Modal</button> */}
+      const recipeList = this.state.recipeList.map((recipe, i) => (
+          <div key={i} className='recipe'><img src={recipe.image_url} alt='thumbnail' />
+          <a className='title' href="#largePic" onClick={() => this.showRecipe(recipe)}>{recipe.title}</a>
+              {/* <button className = "myBtn" onClick={() => this.examplefunction(recipe)}>Open Modal</button> */}
 
-            {/* <!-- The Modal --> */}
-          <div className="myModal">
-            <div className="modal-content">
-              <span className="close" onClick={this.closeModal}>&times;</span>
-              <p>{recipe.title}</p>
+              {/* <!-- The Modal --> */}
+            <div className="myModal">
+              <div className="modal-content">
+                <span className="close" onClick={this.closeModal}>&times;</span>
+                <p>{recipe.title}</p>
+              </div>
             </div>
-          </div>
 
-        </div>
+          </div>
       ))
 
-    const newIngrediants = this.state.ingrediants.map((item, i) => {
-      return (
-        <li key={i}>{item}</li>
-      )
-    })
-
-    const {search} = this.state;
-
+      
     return (
       <div className="App">
-        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={search} closeNav= {this.closeNav} openNav={this.openNav} />
+        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} closeNav= {this.closeNav} openNav={this.openNav} />
         <MainSection recipeList={recipeList}/>
-        <Ingrediants ingrediants={newIngrediants} image={this.state.image}  />
+        <Ingredients ingredients={this.state.ingredients} image={this.state.image}  />
         {/* <Footer /> */}
       </div>
     )

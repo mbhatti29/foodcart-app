@@ -5,11 +5,11 @@ const MainSection = ({recipeList}) => {
   return (
     <div>
       <div className='secondSection'>
-          {recipeList.slice(0,8)}
+          {recipeList.slice(0,10)}
       </div>
 
       <div className="modalEx">
-        <button class="modalBtn">Close</button>
+        <button className="modalBtn">Close</button>
         <div id="modalContent"></div>
       </div>
     </div>

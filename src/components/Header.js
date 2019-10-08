@@ -15,7 +15,7 @@ const Header = ({searchRecipes, search, closeNav, openNav, searchValue}) => {
       </div>
 
       <div id="mySidenav" className="sidenav">
-        <div class="avatar"></div>
+        <div className="avatar"></div>
           <a href="#" className="closebtn" onClick={closeNav}>&times;</a>
           <a href="#">About</a>
           <a href="#">Services</a>
