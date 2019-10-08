@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import MainSection from './components/MainSection';
 import Ingrediants from './components/Ingrediants'
+import yaml from 'yaml-js';
 // import Footer from './components/Footer';
 
 import './App.css';
@@ -101,6 +102,7 @@ class App extends Component {
     }
 
     examplefunction = (recipe) => {
+
       this.setState({
         ingrediants: []
       })
@@ -123,7 +125,7 @@ class App extends Component {
     }
     
   render() {
-
+    
       // const filteredRecipes = this.state.recipeList.filter(recipe => {
       //   return recipe.title.toLowerCase().includes(this.state.search.toLowerCase())
       // })
@@ -164,3 +166,17 @@ class App extends Component {
 }
 
 export default App; 
+
+
+// checklist
+// recipe api
+//https://www.food2fork.com/api/get?key=YOUR_API_KEY&rId=35382
+
+
+// make overlay opacity animation on each food
+// possible modal effect
+// animation on overall page
+
+// add a database and express server
+// login system - auth
+// comment system 
