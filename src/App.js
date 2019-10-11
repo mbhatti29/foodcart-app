@@ -142,17 +142,21 @@ class App extends Component {
     render() {
       
       const recipeList = this.state.recipeList.map((recipe, i) => (
-          <div key={i} className='recipe'><img src={recipe.image_url} alt='thumbnail' />
-          <a className='title' href="#largePic" onClick={() => this.showRecipe(recipe)}>{recipe.title}</a>
+          <div key={i} className='recipe'>
+            <div className='recipeBorder'>
+              <img className="recipeImg" src={recipe.image_url} alt='thumbnail' />
+            </div>
+            
+            <a className='title' href="#largePic" onClick={() => this.showRecipe(recipe)}>{recipe.title}</a>
               {/* <button className = "myBtn" onClick={() => this.examplefunction(recipe)}>Open Modal</button> */}
 
               {/* <!-- The Modal --> */}
-            <div className="myModal">
+            {/* <div className="myModal">
               <div className="modal-content">
                 <span className="close" onClick={this.closeModal}>&times;</span>
                 <p>{recipe.title}</p>
               </div>
-            </div>
+            </div> */}
 
           </div>
       ))

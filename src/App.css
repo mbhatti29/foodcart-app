@@ -92,30 +92,41 @@ form {
 
 .recipe {
     /* flex-basis: 20%; */
-    color: black;
     font-size: 18px;
+    
+    
     /* animation: image; */
     /* animation-duration: 2s; */
     /* padding-top: 10px; */
-    padding: 10px;
+    padding: 15px;
     text-align: center;
     max-width: 300px;
 }
-
-
-.recipe img {
-    border: 5px solid white;
+.recipeBorder {
+    overflow: hidden;  
     border-radius: 50%;
-    width: 180px;
-    height: 180px;
+    /* max-width: 180px;
+    max-height: 180px; */
+}
+
+
+.recipeBorder img {
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    
+    
+    /* border: 5px solid white; */
     /* animation: image; */
 }
 .recipe img:hover {
-    border: 5px solid grey;
+    /* filter: grayscale(70%); */
+    /* border: 5px solid grey; */
     color: white;
     opacity: 0.3;
-    /* animation-name: image; */
-    transition: 0.5s;
+    transition: 0.6s;
+    transform: scale(1.1);
+    
 }
 
 a {
@@ -294,8 +305,6 @@ p.title:hover {
 
 
 
-
-
 #img {
     height: 100%;
     width: 100%;
@@ -331,7 +340,7 @@ p.title:hover {
 
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 870px) {
         .thirdSection {
             width: 800px;
         }
