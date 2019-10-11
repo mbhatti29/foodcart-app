@@ -60,7 +60,13 @@ class App extends Component {
   }
   
   componentDidMount() {
-    
+    fetch('http://localhost:3001/login', {
+      method: 'get',
+      headers: {'Content-Type' : 'application/json'},
+      body: JSON.stringify({
+        
+      })
+    })
   }
 
   search = (event) => {

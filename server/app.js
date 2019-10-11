@@ -16,22 +16,16 @@ const  app = express();
 const server = 3001 || process.env.PORT
 const jsonParser = bodyParser.json()
 
-
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-
 app.use(cors())
 // app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 
 app.get('/', (req, res) => {
-  res.send('App Working')
+  console.log("Clocked In")
 })
 
 app.get('/login', (req, res) => {
