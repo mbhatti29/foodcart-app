@@ -146,10 +146,10 @@ p.title:hover {
     
 }
 
-@keyframes image {
+/* @keyframes image {
     from {opacity: 0;}
     to {opacity: 1;}
-}
+} */
 /* @keyframes fadein {
     from {opacity: 0; }
     to   {opacity: 1; }
@@ -350,3 +350,32 @@ p.title:hover {
             width: 1000px;
         }
 }
+
+/* .example-appear {
+    opacity: 0;
+    z-index: 1;
+}
+
+.example-appear.fade-appear-active {
+    opacity: 1;
+    transition: opacity 3s;
+} */
+
+.example-enter {
+    opacity: 0;
+}
+
+.example-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 3s ease-in;
+}
+
+.example-leave {
+    opacity: 1;
+}
+
+.example-leave.fade-leave-active {
+    opacity: 0;
+    transition: opacity 3s linear;
+}
+

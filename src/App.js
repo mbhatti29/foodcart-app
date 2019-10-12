@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
+// import { CSSTransitionGroup } from 'react-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import MainSection from './components/MainSection';
 import Ingredients from './components/Ingredients'
+
 // import Footer from './components/Footer';
 
 import './App.css';
@@ -13,59 +16,57 @@ class App extends Component {
     this.state = {
        recipeList: [
           {
-           image_url: 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-           title: 'cheese',
-           ingredients: ['1/2 cup mexican', 'taco-tuxedo', 'nacho libre', 'etc etc']
+          image_url: 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+          title: 'cheese',
+          ingredients: ['1/2 cup mexican', 'taco-tuxedo', 'nacho libre', 'etc etc']
           },
           {
-            image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-            title: 'ham',
-            ingredients: ['1/2 cup mexican', 'taco-tuxedo', 'nacho libre', 'etc etc']
+          image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+          title: 'ham',
+          ingredients: ['1/2 cup mexican', 'taco-tuxedo', 'nacho libre', 'etc etc']
 
           },
           {
-            image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-           title: 'burrito',
+          image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+          title: 'burrito',
           ingredients: ['1/2 cup mexican', 'taco-tuxedo', 'nacho libre', 'etc etc'],
 
           },
           {
-            image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-           title: 'ham',
-            ingredients: ['1/2 cup mexican', 'taco-tuxedo', 'nacho libre', 'etc etc']
-
-          },
-          {
-            image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-           title: 'burrito',
+          image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+          title: 'ham',
           ingredients: ['1/2 cup mexican', 'taco-tuxedo', 'nacho libre', 'etc etc']
 
           },
           {
-            image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-           title: 'burrito',
+          image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+          title: 'burrito',
           ingredients: ['1/2 cup mexican', 'taco-tuxedo', 'nacho libre', 'etc etc']
 
           },
           {
-            image_url: 'https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-           title: 'burrito',
+          image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+          title: 'burrito',
+          ingredients: ['1/2 cup mexican', 'taco-tuxedo', 'nacho libre', 'etc etc']
+
+          },
+          {
+          image_url: 'https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+          title: 'burrito',
           ingredients: ['whateva flava', 'anotha one', 'nachooooo', 'etc etc']
 
           }
        ],
-       ingredients: ['1/2 cup of soup', '2 spoons of broocli'],
+      ingredients: ['1/2 cup of soup', '2 spoons of broocli', 'corn', 'flour', 'soda', 'corn', 'flour', 'soda', 'corn', 'flour', 'soda'],
        search : ''
     }
   }
   
   componentDidMount() {
-    fetch('http://localhost:3001/login', {
-      method: 'get',
-      headers: {'Content-Type' : 'application/json'},
-      body: JSON.stringify({
-        
-      })
+    fetch('http://localhost:3001/')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
     })
   }
 
@@ -112,7 +113,7 @@ class App extends Component {
 
   showRecipe = (recipe) => {
     this.setState({
-      ingredients: [],
+      // ingredients: [],
       image: recipe.image_url
     })
     
@@ -145,6 +146,8 @@ class App extends Component {
       })
     }
 
+
+
     render() {
       
       const recipeList = this.state.recipeList.map((recipe, i) => (
@@ -171,9 +174,14 @@ class App extends Component {
     return (
       <div className="App">
         <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} closeNav= {this.closeNav} openNav={this.openNav} />
-        <MainSection recipeList={recipeList}/>
+        
+          <MainSection recipeList={recipeList}/>
+
+
+
         <Ingredients ingredients={this.state.ingredients} image={this.state.image}  />
         {/* <Footer /> */}
+        
       </div>
     )
   }

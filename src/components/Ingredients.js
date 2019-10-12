@@ -1,5 +1,7 @@
 import React from 'react'
 import "./ingredients.css";
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
 const Ingredients = ({ingredients, image}) => {  
   // console.log(ingredients)
@@ -19,11 +21,15 @@ const Ingredients = ({ingredients, image}) => {
         <img className="foodImage" src={image} alt=''/>
       </div>
 
-      <div id="ingredients">
-        <div>
+      <div id="ingredients" className="style-2">
+        <ReactCSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
             <h1>Ingredients</h1>
+            
           {newIngredients}
-        </div>
+        </ReactCSSTransitionGroup>
       </div>
 
     </div>

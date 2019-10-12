@@ -25,11 +25,10 @@ app.use(express.urlencoded({ extended: false }));
 // app.use('/users', usersRouter);
 
 app.get('/', (req, res) => {
-  console.log("Clocked In")
 })
 
 app.get('/login', (req, res) => {
-  res.send("<h1>Welcome</h1>")
+  res.send("<h1>Login</h1>")
 })
 
 
