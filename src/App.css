@@ -131,38 +131,32 @@ form {
 }
 
 a {
-     margin-top: 9px;
+    margin-top: 9px;
     max-width: 250px;
-    display: block;
-    text-decoration: none;
+    /* display: block; */
     font-weight: 800;
     cursor: pointer;
     color: black;
 }
-p.title:hover {
-    text-decoration: underline;
-    color: grey;
-    
-    
+
+.title {
+    font-size: 20px;
+    display: inline-block;
+    color: black;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    text-decoration: none;
+    /* background: #eee; */
+    padding: 2px;
+    border-bottom: 3px solid transparent;
+    /* transition: all ease-in-out 1s; */
+
+}.title:hover {
+    transition: all ease-in 0.3s;
+    border-bottom: 3px solid rgb(131, 125, 125);
+    /* opacity: 0.5; */
 }
 
-/* @keyframes image {
-    from {opacity: 0;}
-    to {opacity: 1;}
-} */
-/* @keyframes fadein {
-    from {opacity: 0; }
-    to   {opacity: 1; }
-} */
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .modal {
     /* display: none; */
@@ -315,13 +309,7 @@ p.title:hover {
 } */
 
 @media screen and (max-width: 800px) {
-    /* .sidenav {
-        padding-top: 15px;
-    }
-
-    .sidenav a {
-        font-size: 18px;
-    } */
+  
     .thirdSection {
         display: flex;
         flex-direction: column;
@@ -345,7 +333,6 @@ p.title:hover {
         .thirdSection {
             width: 800px;
         }
-
         .secondSection {
             width: 1000px;
         }

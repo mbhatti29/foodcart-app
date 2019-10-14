@@ -146,7 +146,19 @@ class App extends Component {
       })
     }
 
+    // const duration = 300;
 
+    // const defaultStyle = {
+    //   transition: `opacity ${duration}ms ease-in-out`,
+    //   opacity: 0
+    // }
+
+    // const transitionStyles = {
+    //   entering: { opacity: 1 },
+    //   entered: {opacity: 1},
+    //   exiting: { opacity: 0 },
+    //   exited: { opacity: 0 }
+    // }
 
     render() {
       
@@ -155,18 +167,7 @@ class App extends Component {
             <div className='recipeBorder'>
               <img className="recipeImg" src={recipe.image_url} alt='thumbnail' />
             </div>
-            
             <a className='title' href="#largePic" onClick={() => this.showRecipe(recipe)}>{recipe.title}</a>
-              {/* <button className = "myBtn" onClick={() => this.examplefunction(recipe)}>Open Modal</button> */}
-
-              {/* <!-- The Modal --> */}
-            {/* <div className="myModal">
-              <div className="modal-content">
-                <span className="close" onClick={this.closeModal}>&times;</span>
-                <p>{recipe.title}</p>
-              </div>
-            </div> */}
-
           </div>
       ))
 
@@ -176,7 +177,6 @@ class App extends Component {
         <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} closeNav= {this.closeNav} openNav={this.openNav} />
         
           <MainSection recipeList={recipeList}/>
-
 
 
         <Ingredients ingredients={this.state.ingredients} image={this.state.image}  />
