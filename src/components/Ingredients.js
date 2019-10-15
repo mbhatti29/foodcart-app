@@ -23,8 +23,9 @@ const Ingredients = ({ingredients, image}) => {
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}>
             <h1>Ingredients</h1>
-            
+        
             {newIngredients}
+         
         </ReactCSSTransitionGroup>
       </div>
     </div>

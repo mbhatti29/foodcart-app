@@ -15,7 +15,7 @@ html {
 }
 
 .App-header {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.842);
   height: 130px;
   display: flex;
   flex-direction: column;
@@ -68,13 +68,40 @@ form {
     to {opacity: 1;}
 }
 
+
+/* input:hover{
+    border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+}
+input:focus{
+    border-color:#4d90fe;
+}
+input{
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    height: 20px;
+    width: 500px;
+    border:1px solid #eaeaea;
+    outline:none;
+} */
+
+
+#search:focus {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.25), 0 5px 11px rgba(0,0,0,0.22);
+/* border: white; */
+}
 #search {
+    color: black;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 3px 6px 7px -3px #ccc;
     /* position: absolute;
     top: 50%;
     left: 50%; */
     transform: translate(0, -50%);
     border-radius: 50em;
-    border: grey solid 3px;
+    border: black solid 1px;
     outline: none;
     height: 21px;
     width: 31%;
@@ -91,10 +118,7 @@ form {
 }
 
 .recipe {
-    /* flex-basis: 20%; */
     font-size: 18px;
-    
-    
     /* animation: image; */
     /* animation-duration: 2s; */
     /* padding-top: 10px; */
@@ -111,8 +135,8 @@ form {
 
 .recipeBorder img {
     border-radius: 50%;
-    width: 220px;
-    height: 220px;
+    width: 200px;
+    height: 200px;
     
     /* border: 5px solid white; */
     /* animation: image; */
@@ -127,11 +151,10 @@ form {
 }
 
 a {
-    margin-top: 9px;
-    max-width: 250px;
+    /* margin-top: 9px; */
+    max-width: 240px;
     /* display: block; */
     font-weight: 800;
-    cursor: pointer;
     color: black;
 }
 
@@ -178,7 +201,7 @@ a {
 }
 
 /* Modal Content */
-.modal-content {
+/* .modal-content {
     background-color: #fefefe;
     position: absolute;
     margin: auto;
@@ -186,9 +209,9 @@ a {
     border: 1px solid #888;
     max-width: 80%;
     display: none;
-}
+} */
 
-.modalBtn {
+/* .modalBtn {
     float: right;
     margin: 20px;
     font-size: 30px;
@@ -206,12 +229,12 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+} */
 /* The Close Button */
-.close {
+/* .close {
     color: #aaaaaa;
     float: right;
-    font-size: 28px;
+    font-size: 98px;
     font-weight: bold;
 }
 
@@ -220,68 +243,7 @@ a {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-}
-
-.avatar {
-    height: 96px;
-    width: 96px;
-    border-radius: 50%;
-    background-color: white;
-    margin-top: -30px;
-    left: 5%;
-    position: relative;
-    margin-bottom:30px;
-}
-
-.sidenav {
-    height: 35%;
-    position: fixed;
-    z-index: 2;
-    /* bottom: 90px; */
-    top: 50;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.4s;
-    padding-top: 60px;
-    width: 0.2px;
-    opacity: 0.95;
-    /* background-color: black; */
-}
-
-.menu:focus {
-    width: 260px;
-}
-
-.sidenav a {
-    font-size: 120%;
-    margin-left: -17px;
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    /* font-size: 25px; */
-    color: white;
-    display: block;
-    transition: 0.2s;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 8px;
-    font-size: 35px;
-    margin-left: 50px;
-}
-
-#name {
-    z-index: 4;
-    color: black;
-    font-size: 15px;
-    position: absolute;
-    margin-top: -5px;
-    top:30;
-    right: 0;
-    float: right;
-}
+} */
 
 .thirdSection {
     display: flex;
@@ -305,7 +267,7 @@ a {
 } */
 
 @media screen and (max-width: 800px) {
-  
+
     .thirdSection {
         display: flex;
         flex-direction: column;
@@ -326,6 +288,7 @@ a {
     #ingredients {
         width: 100%;
         height: 900px;
+        margin-left: 0px;
     }
 
 }
@@ -335,12 +298,12 @@ a {
             width: 800px;
         }
         .secondSection {
-            width: 1100px;
+            width: 930px;
         }
         .recipeBorder img {
             border-radius: 50%;
             width: 200px;
-            height: px; 
+            /* height: px;  */
         }
  }
 

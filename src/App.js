@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
-import { Rating } from 'semantic-ui-react'
 import Header from './components/Header';
-// import { CSSTransitionGroup } from 'react-transition-group';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import MainSection from './components/MainSection';
 import Ingredients from './components/Ingredients';
-import StarRatings from 'react-star-ratings';
-
-
-// import Footer from './components/Footer';
-
 import './App.css';
 
-const RatingExampleClearable = () => <Rating maxRating={5} clearable />
+
+// import StarRatings from 'react-star-ratings';
+// import Footer from './components/Footer';
 
 
 class App extends Component {
@@ -112,6 +106,10 @@ class App extends Component {
       }
   }
 
+  openLogin = () => {
+    document.getElementById("name").style.width = "auto";
+    
+  }
   openNav = () => {
     document.getElementById("mySidenav").style.width = "160px";
   }
@@ -161,39 +159,12 @@ class App extends Component {
    
 
     render() {
-
-      const recipeList = this.state.recipeList.map((recipe, i) => (
-          <div key={i} className='recipe'>
-            <div className='recipeBorder'>
-              <img className="recipeImg" src={recipe.image_url} alt='thumbnail' />
-            </div>
-            <a className='title' href="#largePic" onClick={() => this.showRecipe(recipe)}>{recipe.title}</a>
-            <div>
-              <StarRatings
-                rating={this.state.recipeList[i].rating}
-                // changeRating={this.changeRating}
-                starDimension="18px"
-                starSpacing="1px"
-                name={recipe.title}
-                starRatedColor="grey"
-              />
-            </div>
-          </div>
-      ))
-
+      
       
     return (
       <div className="App">
-        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} closeNav= {this.closeNav} openNav={this.openNav} />
-        
-        {/* <div className='splash'>
-          <div>
-        
-          </div>
-        </div> */}
-          <MainSection recipeList={recipeList}/>
-
-        
+        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} closeNav= {this.closeNav} openNav={this.openNav} openLogin={this.openLogin} />
+          <MainSection recipeList={this.state.recipeList} ingredients={this.showRecipe}/>
         <Ingredients ingredients={this.state.ingredients} image={this.state.image}  />
         {/* <Footer /> */}
       

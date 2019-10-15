@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Header = ({searchRecipes, search, closeNav, openNav, searchValue}) => {  
+const Header = ({searchRecipes, search, closeNav, openNav, openLogin, searchValue}) => {  
   return (
     <div>
       <header className="App-header">
@@ -24,11 +24,32 @@ const Header = ({searchRecipes, search, closeNav, openNav, searchValue}) => {
       </div>
       
       <span className="menu" style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={openNav}>&#9776;</span>
-      <span id="name">
-        <li>User</li>
-        <li>Login</li>
-        <li>Register</li>
-      </span>
+      
+      <div className="right-nav" id="name">
+        <form>
+          <div className='signInDiv'>
+            <h1>Login</h1>
+
+            <div className='signInForm' >
+              <label htmlFor ='email'></label>
+              <input placeholder="User Name" type='text' name='email' id='email' autoComplete="on"/>
+              <br/>
+              <label className='password' htmlFor ='password'></label>
+              <input placeholder="Password"type='password' name='password' id='password' autoComplete="on"/>
+              <div class="submitBtn">
+                <button>Submit</button>
+              </div>
+            </div>
+         
+        </div>
+          <div>
+            <p className='register'>Register</p>
+          </div>
+        </form>
+      </div>
+      
+      <span className="right-menu" style={{ fontSize: "30px", cursor: "pointer", position: 'relative' }} onClick={openLogin}>&#9776;</span>
+      
     </div>
   )
 }
