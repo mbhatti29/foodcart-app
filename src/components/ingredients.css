@@ -1,21 +1,22 @@
 .foodImage {
     height: 100%;
-    width: 100%;
+    width: 105%;
 }
 
 #ingredients {
     text-decoration: none;
     color: white;
-    width: 40%;
+    width: 42%;
     overflow: auto;
     /* height: 380px;
     background-color: grey; */
     display: flex;
     /* align-items: center; */
-    justify-content: center;
+    /* justify-content: center; */
     background-color: black;
-    /* animation: fade 2s; */
-    
+    animation: ease-in 2s;
+    margin-left: 20px;
+    text-decoration: none;
 }
 /* width */
 .style-2::-webkit-scrollbar-track
@@ -54,6 +55,11 @@
     margin-bottom: 25px;
 } */
 
+h1 {
+    margin-left: 20px;
+}
 .list {
     padding-bottom: 16px;
+    margin-left: 14px;
+    text-decoration: none;
 }

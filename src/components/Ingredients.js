@@ -4,8 +4,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 const Ingredients = ({ingredients, image}) => {  
-  // console.log(ingredients)
-
   if (ingredients) {
     var newIngredients = ingredients.map((item, i) => {
       return (
@@ -14,9 +12,7 @@ const Ingredients = ({ingredients, image}) => {
     })
   }
   return (
-  
     <div id="largePic" className='thirdSection'>
-    
       <div id="main-image">
         <img className="foodImage" src={image} alt=''/>
       </div>
@@ -28,12 +24,10 @@ const Ingredients = ({ingredients, image}) => {
           transitionLeaveTimeout={300}>
             <h1>Ingredients</h1>
             
-          {newIngredients}
+            {newIngredients}
         </ReactCSSTransitionGroup>
       </div>
-
     </div>
-
   )
 }
 

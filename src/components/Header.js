@@ -23,7 +23,7 @@ const Header = ({searchRecipes, search, closeNav, openNav, searchValue}) => {
           <a href="#">Contact</a>
       </div>
       
-      <span style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={openNav}>&#9776;</span>
+      <span className="menu" style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={openNav}>&#9776;</span>
       <span id="name">
         <li>User</li>
         <li>Login</li>
