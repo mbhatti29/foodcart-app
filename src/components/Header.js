@@ -1,11 +1,11 @@
 import React from 'react'
 
 
-const Header = ({searchRecipes, search, closeNav, openNav, openLogin, searchValue}) => {  
+const Header = ({searchRecipes, search, closeNav, openNav, openLogin, closeLogin, searchValue}) => {  
   return (
     <div>
       <header className="App-header">
-        <h1 className='b--hot-pink'>Food Cart</h1>
+        <h1>Food Cart</h1>
       </header>
       
       <div className='firstSection'>
@@ -25,10 +25,19 @@ const Header = ({searchRecipes, search, closeNav, openNav, openLogin, searchValu
       
       <span className="menu" style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={openNav}>&#9776;</span>
       
-      <div className="right-nav" id="name">
+      <div className="right-nav" id="login">
+
         <form>
+          <div class="close-container" onClick={closeLogin}>
+            <div class="leftright"></div>
+            <div class="rightleft"></div>
+            <label class="close"></label>
+          </div>
           <div className='signInDiv'>
-            <h1>Login</h1>
+
+            <div>
+              <h1>Login</h1>
+            </div>
 
             <div className='signInForm' >
               <label htmlFor ='email'></label>
@@ -40,8 +49,8 @@ const Header = ({searchRecipes, search, closeNav, openNav, openLogin, searchValu
                 <button>Submit</button>
               </div>
             </div>
-         
-        </div>
+          </div>
+
           <div>
             <p className='register'>Register</p>
           </div>

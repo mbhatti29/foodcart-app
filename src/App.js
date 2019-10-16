@@ -35,8 +35,8 @@ class App extends Component {
           rating: 3.8
           },
           {
-          image_url: 'https://images.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-          title: 'Ham Something',
+          image_url: 'https://images.pexels.com/photos/1304941/pexels-photo-1304941.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+          title: 'Pancakes',
           ingredients: ['1/2 cup mexican', 'taco-tuxedo', 'nacho libre', 'etc etc'],
           rating: 4.2
           },
@@ -107,9 +107,12 @@ class App extends Component {
   }
 
   openLogin = () => {
-    document.getElementById("name").style.width = "auto";
-    
+    document.getElementById("login").style.width = "auto";
   }
+  closeLogin = () => {
+    document.getElementById("login").style.width = "0";
+  }
+
   openNav = () => {
     document.getElementById("mySidenav").style.width = "160px";
   }
@@ -163,7 +166,7 @@ class App extends Component {
       
     return (
       <div className="App">
-        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} closeNav= {this.closeNav} openNav={this.openNav} openLogin={this.openLogin} />
+        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} closeNav= {this.closeNav} openNav={this.openNav} openLogin={this.openLogin} closeLogin={this.closeLogin}/>
           <MainSection recipeList={this.state.recipeList} ingredients={this.showRecipe}/>
         <Ingredients ingredients={this.state.ingredients} image={this.state.image}  />
         {/* <Footer /> */}
