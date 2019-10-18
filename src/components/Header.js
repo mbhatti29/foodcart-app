@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Register from './Register';
+import Login from './Login';
 
 
 const Header = ({searchRecipes, search, closeNav, openNav, searchValue}) => {  
+  
+ 
   return (
     <div>
       <header className="App-header">
@@ -24,39 +28,19 @@ const Header = ({searchRecipes, search, closeNav, openNav, searchValue}) => {
       </div>
       
       <span className="menu" style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={() => { openNav('mySidenav', "160px")} }>&#9776;</span>
-      
-      <div className="right-nav" id="login">
+{/* 
+        {
+          this.state.route === 'home' 
+          ? <Login closeNav={closeNav} />
 
-        <form>
-          <div class="close-container" onClick={() => closeNav("login")}>
-            <div class="leftright"></div>
-            <div class="rightleft"></div>
-            <label class="close"></label>
-          </div>
-          <div className='signInDiv'>
+          : (this.state.route === 'Register' 
+            ? <Register closeNav={closeNav}/>
+            : <Register closeNav={closeNav}/>
+            )
+        } */}
 
-            <div>
-              <h1>Login</h1>
-            </div>
+        
 
-            <div className='signInForm' >
-              <label htmlFor ='email'></label>
-              <input placeholder="User Name" type='text' name='email' id='email' autoComplete="on"/>
-              <br/>
-              <label className='password' htmlFor ='password'></label>
-              <input placeholder="Password"type='password' name='password' id='password' autoComplete="on"/>
-              <div class="submitBtn">
-                <button>Submit</button>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <p className='register'>Register</p>
-          </div>
-        </form>
-      </div>
-      
       <span className="right-menu" style={{ fontSize: "30px", cursor: "pointer", position: 'relative' }} onClick={() => openNav("login", "auto")}>&#9776;</span>
       
     </div>
