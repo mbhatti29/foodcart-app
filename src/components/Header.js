@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Header = ({searchRecipes, search, closeNav, openNav, openLogin, closeLogin, searchValue}) => {  
+const Header = ({searchRecipes, search, closeNav, openNav, searchValue}) => {  
   return (
     <div>
       <header className="App-header">
@@ -16,19 +16,19 @@ const Header = ({searchRecipes, search, closeNav, openNav, openLogin, closeLogin
 
       <div id="mySidenav" className="sidenav">
         <div className="avatar"></div>
-          <a href="#" className="closebtn" onClick={closeNav}>&times;</a>
+          <a href="#" className="closebtn" onClick={() => closeNav("mySidenav")}>&times;</a>
           <a href="#">About</a>
           <a href="#">Services</a>
           <a href="#">Clients</a>
           <a href="#">Contact</a>
       </div>
       
-      <span className="menu" style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={openNav}>&#9776;</span>
+      <span className="menu" style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={() => { openNav('mySidenav', "160px")} }>&#9776;</span>
       
       <div className="right-nav" id="login">
 
         <form>
-          <div class="close-container" onClick={closeLogin}>
+          <div class="close-container" onClick={() => closeNav("login")}>
             <div class="leftright"></div>
             <div class="rightleft"></div>
             <label class="close"></label>
@@ -57,7 +57,7 @@ const Header = ({searchRecipes, search, closeNav, openNav, openLogin, closeLogin
         </form>
       </div>
       
-      <span className="right-menu" style={{ fontSize: "30px", cursor: "pointer", position: 'relative' }} onClick={openLogin}>&#9776;</span>
+      <span className="right-menu" style={{ fontSize: "30px", cursor: "pointer", position: 'relative' }} onClick={() => openNav("login", "auto")}>&#9776;</span>
       
     </div>
   )

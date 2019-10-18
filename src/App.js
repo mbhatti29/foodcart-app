@@ -80,11 +80,10 @@ class App extends Component {
     })
   }
 
-
   // SEARCH RECIPES FROM API
   searchFoods = (event) => {
     event.preventDefault()
-    if (this.state.search) {
+    if (this.state.search.length > 2) {
       const key = '115a287a7e2cfbd715b6be309c1c5075'
       fetch(`https://www.food2fork.com/api/search?key=${key}&q=${this.state.search}`)
         .then(response => response.json())
@@ -98,27 +97,21 @@ class App extends Component {
               recipeList: newList
             })
           }
+          console.log(this.state.recipeList)
         })
-        // console.log(this.state.recipeList)
         .catch(err => {
           console.log("Recieved an error")
         })
-      }
+    }
   }
 
-  openLogin = () => {
-    document.getElementById("login").style.width = "auto";
+  openNav = (el, width) => {
+    document.getElementById(el).style.width = width;
   }
-  closeLogin = () => {
-    document.getElementById("login").style.width = "0";
+  closeNav = (el) => {
+    document.getElementById(el).style.width = "0";
   }
 
-  openNav = () => {
-    document.getElementById("mySidenav").style.width = "160px";
-  }
-  closeNav = () => {
-    document.getElementById("mySidenav").style.width = "0";
-  }
 
   // passes ingrediants and displays them in the section
   showRecipe = (recipe) => {
@@ -132,7 +125,6 @@ class App extends Component {
       fetch(`https://www.food2fork.com/api/get?key=115a287a7e2cfbd715b6be309c1c5075&rId=${recipeId}`)
         .then(response => response.json())
         .then(res => {
-          // console.log(res.recipe.ingredients)
           this.setState({
             ingredients: res.recipe.ingredients,
             image: recipe.image_url
@@ -160,14 +152,12 @@ class App extends Component {
   //   })
   // }
    
-
     render() {
-      
-      
+          
     return (
       <div className="App">
-        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} closeNav= {this.closeNav} openNav={this.openNav} openLogin={this.openLogin} closeLogin={this.closeLogin}/>
-          <MainSection recipeList={this.state.recipeList} ingredients={this.showRecipe}/>
+        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} closeNav= {this.closeNav} openNav={this.openNav} openLogin={this.openNav} closeLogin={this.closeLogin}/>
+        <MainSection recipeList={this.state.recipeList} ingredients={this.showRecipe}/>
         <Ingredients ingredients={this.state.ingredients} image={this.state.image}  />
         {/* <Footer /> */}
       

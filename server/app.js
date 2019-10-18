@@ -1,5 +1,6 @@
 const  express = require('express');
 const  bodyParser = require('body-parser')
+const bcrypt = require('bcryptjs')
 const  cors = require('cors')
 const  knex = require('knex')
 // const  createError = require('http-errors');
@@ -11,24 +12,40 @@ const  knex = require('knex')
 // const  indexRouter = require('./routes/index');
 // const  usersRouter = require('./routes/users');
 
-
-const  app = express();
+const app = express();
 const server = 3001 || process.env.PORT
 const jsonParser = bodyParser.json()
 
 app.use(cors())
-// app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
+
+const db = knex({
+  client: 'pg',
+  connection: {
+    host: 'localhost',
+    port: '3002',
+    user: 'postgres',
+    password: 'Hello.9123',
+    database: 'foodcart'
+  }
+})
 
 app.get('/', (req, res) => {
+  // return db.select('*').from('recipes')
+  db.select('recipe', 'rating').from('recipes').where('email', '=', 'bryant9123@yahoo.com')
+  .then(data => {
+    res.json(data)
+  })
+  .catch(err => {
+    console.log("Problem connecting to db and retreving data")
+  })
 })
 
 app.get('/login', (req, res) => {
-  res.send("<h1>Login</h1>")
+  
+  
 })
 
 
