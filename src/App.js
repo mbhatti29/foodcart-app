@@ -105,12 +105,7 @@ class App extends Component {
     }
   }
 
-  openNav = (el, width) => {
-    document.getElementById(el).style.width = width;
-  }
-  closeNav = (el) => {
-    document.getElementById(el).style.width = "0";
-  }
+
 
 
   // passes ingrediants and displays them in the section
@@ -156,7 +151,7 @@ class App extends Component {
           
     return (
       <div className="App">
-        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} closeNav= {this.closeNav} openNav={this.openNav} openLogin={this.openNav} closeLogin={this.closeLogin}/>
+        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search}/>
         <MainSection recipeList={this.state.recipeList} ingredients={this.showRecipe}/>
         <Ingredients ingredients={this.state.ingredients} image={this.state.image}  />
         {/* <Footer /> */}
