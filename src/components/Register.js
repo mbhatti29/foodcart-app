@@ -45,7 +45,7 @@ class Register extends Component {
         </div>
 
         <div>
-          <p className='register'>Register</p>
+          <p onClick={this.props.route} className='register'>Already Registered?</p>
         </div>
 
       </form>

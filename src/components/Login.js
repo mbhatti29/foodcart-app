@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Login = ({ closeNav }) => {
+const Login = ({ closeNav, route }) => {
   return (
     <div className="right-nav" id="login">
 
@@ -23,7 +23,7 @@ const Login = ({ closeNav }) => {
             <br />
             <label className='password' htmlFor='password'></label>
             <input placeholder="Password" type='password' name='password' id='password' autoComplete="on" />
-            <div class="submitBtn">
+            <div className="submitBtn">
               <button>Submit</button>
             </div>
           </div>
@@ -31,7 +31,7 @@ const Login = ({ closeNav }) => {
         </div>
 
         <div>
-          <p className='register'>Register</p>
+          <p onClick={route} className='register'>Register</p>
         </div>
 
       </form>

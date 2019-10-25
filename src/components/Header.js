@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Register from './Register';
 import Login from './Login';
+import './Header.css';
 
 
 class Header extends Component {
@@ -8,7 +9,7 @@ class Header extends Component {
     super(props)
   
     this.state = {
-       loggedIn: false
+       route: 'login'
     }
   }
 
@@ -19,7 +20,13 @@ class Header extends Component {
     document.getElementById(el).style.width = "0";
   }
   
+  route = (status) => {
+    this.setState({
+      route: status
+    })
+  }
 
+  
   render() {
     
     return (
@@ -46,12 +53,12 @@ class Header extends Component {
       <span className="menu" style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={() => { this.openNav('mySidenav', "160px")} }>&#9776;</span>
 
         {
-          this.state.route === 'home' 
-          ? <Login closeNav={this.props.closeNav} />
+          this.state.route === 'login'
+          ? <Login closeNav={this.closeNav} route={() => this.route('register')}/>
 
-          : (this.state.route === 'Register' 
-            ? <Register closeNav={this.props.closeNav}/>
-            : <Register closeNav={this.props.closeNav}/>
+          : (this.state.route === 'register' 
+            ? <Register closeNav={this.closeNav} route={() => this.route('login')}/>
+            : <Register closeNav={this.closeNav} route={() => this.route('login')}/>
             )
         }
 
