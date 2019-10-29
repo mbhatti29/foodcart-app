@@ -25,7 +25,7 @@ const db = knex({
   client: 'pg',
   connection: {
     host: 'localhost',
-    port: '5432',
+    port: '3002', //5432 for desktop
     user: 'postgres',
     password: 'Hello.9123',
     database: 'foodcart'
@@ -33,7 +33,7 @@ const db = knex({
 })
 
 
-// get recipes from the login user
+//! get recipes from the login user
 app.get('/', (req, res) => {
   
   // return db.select('*').from('recipes')
