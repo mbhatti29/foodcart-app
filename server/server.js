@@ -25,7 +25,7 @@ const db = knex({
   client: 'pg',
   connection: {
     host: 'localhost',
-    port: '3002', //5432 for desktop
+    port: '5432', //5432 for desktop 3002 for laptop
     user: 'postgres',
     password: 'Hello.9123',
     database: 'foodcart'
@@ -34,11 +34,12 @@ const db = knex({
 
 
 //! get recipes from the login user
-app.get('/', (req, res) => {
+app.get('/recipes', (req, res) => {
   
   // return db.select('*').from('recipes')
-  db.select('recipe', 'rating').from('recipes').where('email', '=', 'bryant9123@yahoo.com')
+  db.select('recipe', 'rating', 'image').from('recipes').where('email', '=', 'md@gmail.com')
   .then(data => {
+    // console.log(data)
     res.json(data)
   })
   .catch(err => {
@@ -63,7 +64,16 @@ app.post('/login', (req, res) => {
           response 
             ? db.select('*').from('users').where('email', '=', email)
                 .then(user => {
-                  res.json(user[0])
+                  const userProfile = user[0];
+                  return db('recipes')
+                   .select('*').where('email', '=', email)
+                   .then(recipes => {
+                      res.json({
+                        user: userProfile,
+                        recipeList: recipes
+                      })
+                    })
+                  // res.json(user[0])
                 })
                 .catch(err => {
                   res.status(400).json('Error logging in')
@@ -78,9 +88,9 @@ app.post('/login', (req, res) => {
 
 //! register User
 app.post('/register', (req, res) => {
-  const { email, name, password } = req.body
+  const { email, username, password } = req.body
 
-  if (!email || !name || !password) {
+  if (!email || !username || !password) {
     return res.status(400).json('Error processing request')
   }
 
@@ -97,8 +107,8 @@ app.post('/register', (req, res) => {
             return trx('users')
               .returning('*')
               .insert({
-                name: name,
-                email: loginEmail[0],
+                name: username,
+                email: loginEmail[0]
               })
               .then(user => {
                 res.json(user[0])
