@@ -7,32 +7,34 @@ class Register extends Component {
     this.state = {
        email: '',
        password: '',
-       name: ''
+       username: ''
     }
   }
   
-  onNameChange = (event) => {
-    this.setState({ name: event.target.value })
-  }
-  onEmailChange = (event) => {
-    this.setState({ email: event.target.value })
-  }
-  onPasswordChange = (event) => {
-    this.setState({ password: event.target.value })
+
+  onEventChange = (event) => {
+    const inputValue = event.target.value;
+    const stateField = event.target.name;
+
+    this.setState({
+      [stateField]: inputValue
+    })
   }
 
   onSubmitSigIn = () => {
 
-    fetch('http://localhost:3001/login', {
+    fetch('http://localhost:3001/register', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         email: this.state.email,
         password: this.state.password,
+        username: this.state.username
       })
     })
     .then(res => res.json())
     .then(user => {
+      console.log(user)
       if (user.id) {
         this.props.loadUser(user)
         this.props.onRouteChange('home')
@@ -44,11 +46,11 @@ class Register extends Component {
     return (
       <div className="right-nav" id="login">
 
-      <form>
-        <div class="close-container" onClick={() => this.props.closeNav("login")}>
-          <div class="leftright"></div>
-          <div class="rightleft"></div>
-          <label class="close"></label>
+        <form onSubmit={this.onSubmitSigIn}>
+        <div className="close-container" onClick={() => this.props.closeNav("login")}>
+          <div className="leftright"></div>
+          <div className="rightleft"></div>
+          <label className="close"></label>
         </div>
 
         <div className='signInDiv'>
@@ -59,16 +61,16 @@ class Register extends Component {
 
           <div className='signInForm' >
             <label htmlFor='username'></label>
-            <input placeholder="User Name" type='text' name='username' id='username' autoComplete="on" />
+            <input placeholder="User Name" type='text' name='username' id='username' autoComplete="on" onChange={this.onEventChange}/>
             <br />
 
             <label htmlFor='email'></label>
-            <input placeholder="Email" type='email' name='email' id='email' autoComplete="on" required/>
+              <input placeholder="Email" type='email' name='email' id='email' autoComplete="on" onChange={this.onEventChange} required />
             <br />
 
             <label className='password' htmlFor='password'></label>
-            <input placeholder="Password" type='password' name='password' id='password' autoComplete="on" />
-            <div class="submitBtn">
+              <input placeholder="Password" type='password' name='password' id='password' onChange={this.onEventChange} />
+            <div className="submitBtn">
               <button>Submit</button>
             </div>
           </div>

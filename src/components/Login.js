@@ -1,15 +1,17 @@
 import React from 'react'
 
-const Login = ({ closeNav, route }) => {
+const Login = ({ closeNav, route, login }) => {
   return (
     <div className="right-nav" id="login">
-
       <form>
-        <div class="close-container" onClick={() => closeNav("login")}>
-          <div class="leftright"></div>
-          <div class="rightleft"></div>
-          <label class="close"></label>
+
+        {/* x out button div*/}
+        <div className="close-container" onClick={() => closeNav("login")}>
+          <div className="leftright"></div>
+          <div className="rightleft"></div>
+          <label className="close"></label>
         </div>
+
 
         <div className='signInDiv'>
 

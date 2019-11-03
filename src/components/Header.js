@@ -9,7 +9,8 @@ class Header extends Component {
     super(props)
   
     this.state = {
-       route: 'login'
+       route: 'login',
+       userName: 'Mudassar'
     }
   }
 
@@ -26,46 +27,73 @@ class Header extends Component {
     })
   }
 
+  loadUser = (data) => {
+    this.setState({
+      user:{
+        username: data.name,
+        email: data.email
+      },
+      recipeList: []
+    })
+  }
   
+  onSubmitSignIn = () => {
+    fetch('http://localhost:3001/login', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        email: this.state.signInEmail,
+        password: this.state.signInPassword
+      })
+    })
+    .then(res => res.json())
+    .then(user => {
+      if (user.name) {
+        this.props.loadUser(user)
+      }
+    })
+  }
+
   render() {
     
     return (
-    <div>
-      <header className="App-header">
-        <h1>Food Cart</h1>
-      </header>
-      
-      <div className='firstSection'>
-        <form onSubmit={this.props.searchRecipes}>
-          <input id='search' onChange={this.props.search} value={this.props.searchValue} type='text' placeholder='Search Recipe'/>
-        </form>
+      <div>
+        <header className="App-header">
+          <h1>Food Cart</h1>
+        </header>
+        
+        <div className='firstSection'>
+          <form onSubmit={this.props.searchRecipes}>
+            <input id='search' onChange={this.props.search} value={this.props.searchValue} type='text' placeholder='Search Recipe'/>
+          </form>
+        <h3 className='userName'>Welcome {this.state.userName}</h3>
+        </div>
+        
+        <div id="mySidenav" className="sidenav">
+          <div className="avatar"></div>
+            <a href="#" className="closebtn" onClick={() => this.closeNav("mySidenav")}>&times;</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+        
+
+        <span className="menu" style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={() => { this.openNav('mySidenav', "160px")} }>&#9776;</span>
+        
+          {
+            this.state.route === 'login'
+            ? <Login closeNav={this.closeNav} route={() => this.route('register')} login={this.loadUser} />
+
+            : (this.state.route === 'register' 
+              ? <Register closeNav={this.closeNav} route={() => this.route('login')}/>
+              : <Register closeNav={this.closeNav} route={() => this.route('login')}/>
+              )
+          }
+
+        <span className="right-menu" style={{ fontSize: "30px", cursor: "pointer", position: 'relative' }} onClick={() => this.openNav("login", "auto")}>&#9776;</span>
+        
       </div>
-
-      <div id="mySidenav" className="sidenav">
-        <div className="avatar"></div>
-          <a href="#" className="closebtn" onClick={() => this.closeNav("mySidenav")}>&times;</a>
-          <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="#">Clients</a>
-          <a href="#">Contact</a>
-      </div>
-      
-      <span className="menu" style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={() => { this.openNav('mySidenav', "160px")} }>&#9776;</span>
-
-        {
-          this.state.route === 'login'
-          ? <Login closeNav={this.closeNav} route={() => this.route('register')}/>
-
-          : (this.state.route === 'register' 
-            ? <Register closeNav={this.closeNav} route={() => this.route('login')}/>
-            : <Register closeNav={this.closeNav} route={() => this.route('login')}/>
-            )
-        }
-
-  
-      <span className="right-menu" style={{ fontSize: "30px", cursor: "pointer", position: 'relative' }} onClick={() => this.openNav("login", "auto")}>&#9776;</span>
-      
-    </div>
   )
   }
 }

@@ -133,12 +133,13 @@ class App extends Component {
     }
   }
   
-    //filter recipes on users page 
-  filterRecipes = () => {
-    const filteredRecipes = this.state.recipeList.filter(recipe => {
-      return recipe.title.toLowerCase().includes(this.state.search.toLowerCase())
-    })
-  }
+  // === filter recipes on users page ===
+  
+  // filterRecipes = () => {
+  //   const filteredRecipes = this.state.recipeList.filter(recipe => {
+  //     return recipe.title.toLowerCase().includes(this.state.search.toLowerCase())
+  //   })
+  // }
 
   //   changeRating = (newRating, name) => {
   //     console.log(name)

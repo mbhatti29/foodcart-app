@@ -1,3 +1,23 @@
 .register {
     cursor: pointer;
 }
+
+.userName {
+    z-index: 5;
+    position: absolute;
+    top: -9px;
+    right: 10px;
+    float: right;
+    color: rgb(100, 96, 96);
+}
+span.right-menu {
+    /* left: 70px; */
+    top: 15px;
+    float: right;
+    position: relative;
+}
+
+.right-nav {
+    z-index: 3;
+    position: relative;
+}
