@@ -21,7 +21,8 @@ class Register extends Component {
     })
   }
 
-  onSubmitSigIn = () => {
+  onSubmitSigIn = (event) => {
+    event.preventDefault();
 
     fetch('http://localhost:3001/register', {
       method: 'post',
@@ -37,7 +38,7 @@ class Register extends Component {
       console.log(user)
       if (user.id) {
         this.props.loadUser(user)
-        this.props.onRouteChange('home')
+        // this.props.onRouteChange('home')
       }
     })
   }

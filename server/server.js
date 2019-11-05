@@ -25,7 +25,7 @@ const db = knex({
   client: 'pg',
   connection: {
     host: 'localhost',
-    port: '5432', //5432 for desktop 3002 for laptop
+    port: '3002', //5432 for desktop 3002 for laptop
     user: 'postgres',
     password: 'Hello.9123',
     database: 'foodcart'
@@ -77,7 +77,7 @@ app.post('/login', (req, res) => {
                 })
                 .catch(err => {
                   res.status(400).json('Error logging in')
-                })
+                }) 
             : res.status(400).json('Wrong Credentials')
         })
         .catch(err => {
@@ -112,6 +112,7 @@ app.post('/register', (req, res) => {
               })
               .then(user => {
                 res.json(user[0])
+                // console.log(user)
               })
               .catch(err => {
                 res.json('Error registering User')

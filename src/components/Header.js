@@ -9,8 +9,11 @@ class Header extends Component {
     super(props)
   
     this.state = {
-       route: 'login',
-       userName: 'Mudassar'
+      user: {
+        userName: 'Mudassar',
+        email: ''
+      },
+      route: 'login'
     }
   }
 
@@ -28,15 +31,19 @@ class Header extends Component {
   }
 
   loadUser = (data) => {
+    console.log(data)
     this.setState({
       user:{
-        username: data.name,
+        userName: data.name,
         email: data.email
       },
       recipeList: []
     })
+    console.log(this.state.user.userName)
   }
-  
+
+
+
   onSubmitSignIn = () => {
     fetch('http://localhost:3001/login', {
       method: 'post',
@@ -66,7 +73,7 @@ class Header extends Component {
           <form onSubmit={this.props.searchRecipes}>
             <input id='search' onChange={this.props.search} value={this.props.searchValue} type='text' placeholder='Search Recipe'/>
           </form>
-        <h3 className='userName'>Welcome {this.state.userName}</h3>
+          <h3 className='userName'>Welcome {this.state.user.userName}</h3>
         </div>
         
         <div id="mySidenav" className="sidenav">
@@ -80,17 +87,15 @@ class Header extends Component {
         
 
         <span className="menu" style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={() => { this.openNav('mySidenav', "160px")} }>&#9776;</span>
-        
           {
             this.state.route === 'login'
-            ? <Login closeNav={this.closeNav} route={() => this.route('register')} login={this.loadUser} />
+            ? <Login closeNav={this.closeNav} route={() => this.route('register')} login={this.loadUser} ingrediants={this.props.ingredients} />
 
             : (this.state.route === 'register' 
-              ? <Register closeNav={this.closeNav} route={() => this.route('login')}/>
-              : <Register closeNav={this.closeNav} route={() => this.route('login')}/>
+              ? <Register closeNav={this.closeNav} loadUser={this.loadUser} route={() => this.route('login')}/>
+              : <Register closeNav={this.closeNav} loadUser={this.loadUser} route={() => this.route('login')}/>
               )
           }
-
         <span className="right-menu" style={{ fontSize: "30px", cursor: "pointer", position: 'relative' }} onClick={() => this.openNav("login", "auto")}>&#9776;</span>
         
       </div>

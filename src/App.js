@@ -67,11 +67,11 @@ class App extends Component {
   }
   
   componentDidMount() {
-    fetch('http://localhost:3001/')
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-    })
+    // fetch('http://localhost:3001/')
+    // .then(res => res.json())
+    // .then(data => {
+    //   console.log(data)
+    // })
   }
 
   search = (event) => {
@@ -152,7 +152,7 @@ class App extends Component {
           
     return (
       <div className="App">
-        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search}/>
+        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} ingredients={this.onLogin}/>
         <MainSection recipeList={this.state.recipeList} ingredients={this.showRecipe}/>
         <Ingredients ingredients={this.state.ingredients} image={this.state.image}  />
         {/* <Footer /> */}
