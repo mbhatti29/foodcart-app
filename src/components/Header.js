@@ -31,35 +31,35 @@ class Header extends Component {
   }
 
   loadUser = (data) => {
-    console.log(data)
+    // console.log(data)
     this.setState({
       user:{
-        userName: data.name,
-        email: data.email
+        userName: data.user.name,
+        email: data.user.email
       },
-      recipeList: []
+      recipeList: data.recipeList
     })
-    console.log(this.state.user.userName)
+    console.log(this.state.recipeList)
   }
 
 
 
-  onSubmitSignIn = () => {
-    fetch('http://localhost:3001/login', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: this.state.signInEmail,
-        password: this.state.signInPassword
-      })
-    })
-    .then(res => res.json())
-    .then(user => {
-      if (user.name) {
-        this.props.loadUser(user)
-      }
-    })
-  }
+  // onSubmitSignIn = () => {
+  //   fetch('http://localhost:3001/login', {
+  //     method: 'post',
+  //     headers: {'Content-Type': 'application/json'},
+  //     body: JSON.stringify({
+  //       email: this.state.signInEmail,
+  //       password: this.state.signInPassword
+  //     })
+  //   })
+  //   .then(res => res.json())
+  //   .then(user => {
+  //     if (user.name) {
+  //       this.props.loadUser(user)
+  //     }
+  //   })
+  // }
 
   render() {
     
@@ -89,7 +89,7 @@ class Header extends Component {
         <span className="menu" style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={() => { this.openNav('mySidenav', "160px")} }>&#9776;</span>
           {
             this.state.route === 'login'
-            ? <Login closeNav={this.closeNav} route={() => this.route('register')} login={this.loadUser} ingrediants={this.props.ingredients} />
+            ? <Login closeNav={this.closeNav} route={() => this.route('register')} loadUser={this.loadUser} ingredients={this.props.ingredients} />
 
             : (this.state.route === 'register' 
               ? <Register closeNav={this.closeNav} loadUser={this.loadUser} route={() => this.route('login')}/>

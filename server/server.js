@@ -35,7 +35,6 @@ const db = knex({
 
 //! get recipes from the login user
 app.get('/recipes', (req, res) => {
-  
   // return db.select('*').from('recipes')
   db.select('recipe', 'rating', 'image').from('recipes').where('email', '=', 'md@gmail.com')
   .then(data => {
@@ -50,24 +49,27 @@ app.get('/recipes', (req, res) => {
 
 //! login User
 app.post('/login', (req, res) => {
+  
   const { email, password } = req.body;
-
-  if (!email || password) {
+  
+  if (!email || !password) {
     return res.status(400).json('Error processing credentials')
   }
 
-  db.select('email', 'hash').from('login').where('email', '=', email)
-
+  db.select('hash', 'email').from('login').where('email', '=', email)
     .then(data => {
+
       bcrypt.compare(password, data[0].hash)
         .then(response => {
+          // console.log(response)
           response 
-            ? db.select('*').from('users').where('email', '=', email)
+            ? db.select('name','email').from('users').where('email', '=', email)
                 .then(user => {
                   const userProfile = user[0];
                   return db('recipes')
                    .select('*').where('email', '=', email)
                    .then(recipes => {
+                    //  console.log(recipes)
                       res.json({
                         user: userProfile,
                         recipeList: recipes
@@ -81,8 +83,13 @@ app.post('/login', (req, res) => {
             : res.status(400).json('Wrong Credentials')
         })
         .catch(err => {
+          console.log('Error')
           res.status(400).json('Wrong Credentials')
         })
+    })
+    .catch(err => {
+      console.log('Problem with login')
+      res.status(400).json('Problem with Login')
     })
 })
 
