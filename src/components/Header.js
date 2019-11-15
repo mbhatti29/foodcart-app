@@ -10,7 +10,7 @@ class Header extends Component {
   
     this.state = {
       user: {
-        userName: 'Mudassar',
+        userName: 'Stranger',
         email: ''
       },
       route: 'login'
@@ -96,7 +96,7 @@ class Header extends Component {
               : <Register closeNav={this.closeNav} loadUser={this.loadUser} route={() => this.route('login')}/>
               )
           }
-        <span className="right-menu" style={{ fontSize: "30px", cursor: "pointer", position: 'relative' }} onClick={() => this.openNav("login", "auto")}>&#9776;</span>
+        <span className="right-menu" style={{ fontSize: "30px", cursor: "pointer", position: 'relative' }} onClick={() => this.openNav("login", "200px")}>&#9776;</span>
         
       </div>
   )

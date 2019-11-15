@@ -291,6 +291,9 @@ a {
         height: 600px;
         width: 450px;
     }
+    h3 {
+        font-size: 14px;
+    }
     
     .recipeBorder img {
         border-radius: 50%;
@@ -314,6 +317,7 @@ a {
         .thirdSection {
             width: 800px;
         }
+        
         .secondSection {
             width: 930px;
         }
