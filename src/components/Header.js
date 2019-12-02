@@ -31,7 +31,7 @@ class Header extends Component {
   }
 
   loadUser = (data) => {
-    // console.log(data)
+    console.log(data)
     this.setState({
       user:{
         userName: data.user.name,

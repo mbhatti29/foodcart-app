@@ -35,6 +35,7 @@ class Login extends Component {
         // console.log(data)
         if (data.user) {
           this.props.loadUser(data)
+          this.props.closeNav("login")
         }
       }) 
   }

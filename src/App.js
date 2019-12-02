@@ -4,7 +4,6 @@ import MainSection from './components/MainSection';
 import Ingredients from './components/Ingredients';
 import './App.css';
 
-
 // import StarRatings from 'react-star-ratings';
 // import Footer from './components/Footer';
 
@@ -26,7 +25,6 @@ class App extends Component {
           title: 'Chicken Salad',
           ingredients: ['1/2 cup mexican', 'taco-tuxedo', 'nacho libre', 'etc etc'],
           rating:4.6
-
           },
           {
             image_url: 'https://www.seriouseats.com/recipes/images/2015/07/20150728-homemade-whopper-food-lab-35-1500x1125.jpg',
@@ -59,11 +57,10 @@ class App extends Component {
           rating: 3.7
           }
        ],
-      ingredients: ['1/2 cup of soup', '2 spoons of broocli', 'corn', 'flour', 'soda', 'corn', 'flour', 'soda', 'corn', 'flour', 'soda'],
+      ingredients: [],
       search : '',
       rating: undefined
     }
-
   }
   
   componentDidMount() {
@@ -73,6 +70,7 @@ class App extends Component {
     //   console.log(data)
     // })
   }
+
 
   search = (event) => {
     this.setState({
@@ -105,7 +103,17 @@ class App extends Component {
     }
   }
 
-
+  loadUser = (data) => {
+    console.log(data)
+    // this.setState({
+    //   user: {
+    //     userName: data.user.name,
+    //     email: data.user.email
+    //   },
+    //   recipeList: data.recipeList
+    // })
+    // console.log(this.state.recipeList)
+  }
 
 
   // passes ingrediants and displays them in the section
@@ -152,7 +160,7 @@ class App extends Component {
           
     return (
       <div className="App">
-        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} ingredients={this.onLogin}/>
+        <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} loadUser = {this.loadUser} ingredients={this.onLogin}/>
         <MainSection recipeList={this.state.recipeList} ingredients={this.showRecipe}/>
         <Ingredients ingredients={this.state.ingredients} image={this.state.image}  />
         {/* <Footer /> */}

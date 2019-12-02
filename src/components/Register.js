@@ -38,6 +38,7 @@ class Register extends Component {
       // console.log(user)
       if (user.id) {
         this.props.loadUser(user)
+        this.props.closeNav("login")
         // this.props.onRouteChange('home')
       }
     })

@@ -58,7 +58,6 @@ app.post('/login', (req, res) => {
 
   db.select('hash', 'email').from('login').where('email', '=', email)
     .then(data => {
-
       bcrypt.compare(password, data[0].hash)
         .then(response => {
           // console.log(response)
