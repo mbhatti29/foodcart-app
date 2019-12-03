@@ -1,0 +1,20 @@
+.footer {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    color: grey;
+    background-color: #E8E6DA;
+    justify-content: center;
+    border-top: 1px solid lightgrey;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: lightgrey;
+}
+.footer li {
+    font-size: 16px;
+    margin: 20px 40px;
+    /* margin-right: 40px;
+    margin-left: 40px; */
+    list-style-type: none;
+}
