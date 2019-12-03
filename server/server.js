@@ -25,7 +25,7 @@ const db = knex({
   client: 'pg',
   connection: {
     host: 'localhost',
-    port: '3002', //5432 for desktop 3002 for laptop
+    port: '5432', //5432 for desktop 3002 for laptop
     user: 'postgres',
     password: 'Hello.9123',
     database: 'foodcart'
@@ -51,7 +51,7 @@ app.get('/recipes', (req, res) => {
 app.post('/login', (req, res) => {
   
   const { email, password } = req.body;
-  
+  // console.log(email, password)
   if (!email || !password) {
     return res.status(400).json('Error processing credentials')
   }

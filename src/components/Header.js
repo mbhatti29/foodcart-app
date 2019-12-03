@@ -10,7 +10,7 @@ class Header extends Component {
   
     this.state = {
       user: {
-        userName: 'Stranger',
+        username: 'Stranger',
         email: ''
       },
       route: 'login'
@@ -31,17 +31,25 @@ class Header extends Component {
   }
 
   loadUser = (data) => {
-    console.log(data)
     this.setState({
       user:{
-        userName: data.user.name,
-        email: data.user.email
+        username: data.name,
+        email: data.email
       },
       recipeList: data.recipeList
     })
-    console.log(this.state.recipeList)
+    console.log(this.state)
   }
 
+  loginUser = (data) => {
+    this.setState({
+      user: {
+        username: data.user.name,
+        email: data.user.email
+      },
+      recipeList: data.user.recipeList
+    })
+  }
 
 
   // onSubmitSignIn = () => {
@@ -73,7 +81,7 @@ class Header extends Component {
           <form onSubmit={this.props.searchRecipes}>
             <input id='search' onChange={this.props.search} value={this.props.searchValue} type='text' placeholder='Search Recipe'/>
           </form>
-          <h3 className='userName'>Welcome {this.state.user.userName}</h3>
+          <h3 className='userName'>Welcome {this.state.user.username}</h3>
         </div>
         
         <div id="mySidenav" className="sidenav">
@@ -89,7 +97,7 @@ class Header extends Component {
         <span className="menu" style={{fontSize:"30px", cursor:"pointer", position:'relative'}} onClick={() => { this.openNav('mySidenav', "160px")} }>&#9776;</span>
           {
             this.state.route === 'login'
-            ? <Login closeNav={this.closeNav} route={() => this.route('register')} loadUser={this.loadUser} ingredients={this.props.ingredients} />
+            ? <Login closeNav={this.closeNav} route={() => this.route('register')} loginUser={this.loginUser} ingredients={this.props.ingredients} />
 
             : (this.state.route === 'register' 
               ? <Register closeNav={this.closeNav} loadUser={this.loadUser} route={() => this.route('login')}/>

@@ -34,7 +34,7 @@ class Login extends Component {
       .then(data => {
         // console.log(data)
         if (data.user) {
-          this.props.loadUser(data)
+          this.props.loginUser(data)
           this.props.closeNav("login")
         }
       }) 
