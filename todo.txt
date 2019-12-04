@@ -1,6 +1,9 @@
 1. Register Users -- 
-2. Reroute user to user home page after registering 
+2. Reroute user to user home page after registering --
+5. add footer --
 3. login users -- 
 4. add personal recipes to each user
-5. add footer
 6. add side bar navigation routes
+7. change background image of header
+8. fix overlay of login menu
+

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import MainSection from './components/MainSection';
 import Ingredients from './components/Ingredients';
+import Footer from './components/Footer';
 import './App.css';
 
 // import StarRatings from 'react-star-ratings';
@@ -163,7 +164,7 @@ class App extends Component {
         <Header searchRecipes={this.searchFoods} search={this.search} searchValue={this.state.search} loadUser = {this.loadUser} ingredients={this.onLogin}/>
         <MainSection recipeList={this.state.recipeList} ingredients={this.showRecipe}/>
         <Ingredients ingredients={this.state.ingredients} image={this.state.image}  />
-        {/* <Footer /> */}
+        <Footer />
       
       </div>
     )
@@ -172,16 +173,3 @@ class App extends Component {
 
 export default App; 
 
-
-// checklist
-// recipe api
-//https://www.food2fork.com/api/get?key=YOUR_API_KEY&rId=35382
-
-
-// make overlay opacity animation on each food
-// possible modal effect
-// animation on overall page
-
-// add a database and express server
-// login system - auth
-// comment system 

@@ -90,7 +90,7 @@ class Header extends Component {
             <a href="#">About</a>
             <a href="#">Services</a>
             <a href="#">Clients</a>
-            <a href="#">Contact</a>
+            <a href="#" href="#footer">Contact</a>
         </div>
         
 

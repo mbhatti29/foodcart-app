@@ -60,7 +60,7 @@ class Login extends Component {
           <div className='signInForm'>
             <label htmlFor='email'></label>
             <input placeholder="Email" type='text' name='email' id='email' autoComplete="on" onChange={this.onEventChange} />
-            <br />
+            <br /> 
             <label className='password' htmlFor='password'></label>
             <input placeholder="Password" type='password' name='password' id='password' autoComplete="on" onChange={this.onEventChange}/>
             
